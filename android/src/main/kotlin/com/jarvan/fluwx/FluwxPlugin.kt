@@ -238,7 +238,7 @@ class FluwxPlugin : FlutterPlugin, MethodCallHandler, ActivityAware,
 
     private fun openWXApp(result: Result) = result.success(WXAPiHandler.wxApi?.openWXApp())
 
-    override fun onNewIntent(intent: Intent?): Boolean {
+    override fun onNewIntent(@NonNull intent: Intent): Boolean {
         handelIntent(intent)
         return false
     }
