@@ -33,11 +33,13 @@ class FluwxPlugin : FlutterPlugin, MethodCallHandler, ActivityAware,
 
     private var context: Context? = null
 
-    private fun handelIntent(intent: Intent) {
+    private fun handelIntent(intent: Intent?) {
+        if(intent != null){    
         val action = intent.action
         val dataString = intent.dataString
         if (Intent.ACTION_VIEW == action) {
             extMsg = dataString
+        }   
         }
     }
 
@@ -236,7 +238,7 @@ class FluwxPlugin : FlutterPlugin, MethodCallHandler, ActivityAware,
 
     private fun openWXApp(result: Result) = result.success(WXAPiHandler.wxApi?.openWXApp())
 
-    override fun onNewIntent(intent: Intent): Boolean {
+    override fun onNewIntent(intent: Intent?): Boolean {
         handelIntent(intent)
         return false
     }
