@@ -18,6 +18,7 @@ import kotlinx.coroutines.*
 import java.io.File
 import java.util.*
 import kotlin.coroutines.CoroutineContext
+import androidx.annotation.NonNull
 
 
 /***
@@ -51,7 +52,7 @@ internal interface FluwxShareHandler : CoroutineScope {
         private const val keyDescription = "description"
     }
 
-    fun share(call: MethodCall, result: MethodChannel.Result) {
+    fun share(@NonNull call: MethodCall,@NonNull result: MethodChannel.Result) {
         if (WXAPiHandler.wxApi == null) {
             result.error("Unassigned WxApi", "please config  wxapi first", null)
             return
